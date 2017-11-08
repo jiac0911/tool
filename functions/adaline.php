@@ -7,8 +7,8 @@ class Adaline
     protected $bias;
     protected $alpha;
     public $vectorPesos;
-    protected $iteraciones = 0;
-    protected $ecm = 0;
+    public $iteraciones = 0;
+    public $ecm;
     protected $error = 0;
     public $salida = null;
 
@@ -112,7 +112,7 @@ $yk=0;
         for ($j=0; $j < $this->iteraciones ; $j++) {
             # code...
 
-        $this->ecm=0;
+        $this->ecm[$j]=0;
 
 
             for ($k=0; $k < $this->numDatos; $k++) {
@@ -134,7 +134,8 @@ $yk=0;
                 // echo ($yk)."</br>";
                 // echo $datos[$k][$this->numEntradas-1]."</br>";
 
-                $this->ecm= $this->ecm + (($this->error)^2)/(2*$this->numDatos);
+
+                $this->ecm[$j]= $this->ecm[$j] + ((pow($this->error,2))/(2*$this->numDatos));
 
                 for ($i=0; $i < $this->numEntradas ; $i++) {
 
@@ -142,8 +143,12 @@ $yk=0;
                 }
             }
 
-            if ($this->ecm==0.0000001) {
-                $j=$this->iteraciones;
+            if ($this->ecm[$j]<=0.000001) {
+                $ite=$this->iteraciones;
+                $this->iteraciones=$j;
+                $j=$ite;
+
+
             }
 
         }

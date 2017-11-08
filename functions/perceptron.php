@@ -132,7 +132,7 @@ class Perceptron
                 $this->error=$datos[$k][$this->numEntradas-1]-$yk;
                 // echo $datos[$k][$this->numEntradas-1]."</br>";
 
-                $this->ecm= $this->ecm + (($this->error)^2)/(2*$this->numDatos);
+                $this->ecm= $this->ecm + (pow($this->error,2))/(2*$this->numDatos);
 
                 for ($i=0; $i < $this->numEntradas ; $i++) {
                     $this->vectorPesos[$i]=$this->vectorPesos[$i] + (($this->error)*$datos[$k][$i]);
