@@ -15,7 +15,7 @@
   <h1>Nota:</h1>
 </div>
 
-<img id="ima" src="cinco.jpg" alt="Car" >
+<img id="ima" src="styles/cinco.jpg" alt="Car" >
 
 </div>
 
