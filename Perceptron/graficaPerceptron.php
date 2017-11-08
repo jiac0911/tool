@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="../styles/w3.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/perceptron.css">
+    <link href="../c3/c3.css" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+    <script src="../c3/d3.v3.min.js" charset="utf-8"></script>
+    <script src="../c3/c3.min.js"></script>
+
     <body>
 
 <!-- Sidebar -->
@@ -31,8 +37,20 @@
 
 <?php }?></div>
 
-
+        <div id="chart"></div>
         </div>
 
+    <script>
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+              columns: [
+                ['data1', 30, 200, 100, 400, 150, 250]
+              ]
+            }
+        });
+    </script>
+
     </body>
+
 </html>
