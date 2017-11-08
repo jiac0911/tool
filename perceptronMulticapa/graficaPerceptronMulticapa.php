@@ -1,6 +1,19 @@
 <?php
 
-    require_once('../functions/datosMulticapa.php');
+    //require_once('../functions/datosMulticapa.php');
+
+    include_once '../functions/perceptronMulticapa.php';
+
+    $alfa=0.5;
+    $numEntradas=2;
+    $numOcultas=10;
+    $numIteraciones=1000;
+    $matrizDatos=array(
+        array(0,0,1,0),
+        array(0,1,1,1),
+        array(1,0,1,1),
+        array(1,1,1,0),
+            );
 
     $perceptronM=new perceptronMulticapa($alfa,$numEntradas,$numOcultas,$numIteraciones,$matrizDatos);
     $perceptronM->entrenar();
@@ -8,33 +21,4 @@
     die();
 
 ?>
-
-<html>
-    <title>SI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../styles/w3.css">
-    <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/perceptron.css">
-    <body>
-
-<!-- Sidebar -->
-<?php include '../layouts/sideBar.php';?>
-
-<!-- Page Content -->
-        <div style="margin-left:25%">
-        <div class="w3-container w3-teal">
-          <h1>Perceptron Multicapa:</h1>
-        </div>
-
-<div style="margin: 20px !important;"><?php for ($i=0; $i < sizeof($perceptron->vectorPesos)-1 ; $i++) { ?>
-
-    <label for="">Peso <?= $i+1 ?>:</label><?= $perceptron->vectorPesos[$i]; ?><br>
-
-
-<?php }?></div>
-
-
-        </div>
-
-    </body>
-</html>
+   
