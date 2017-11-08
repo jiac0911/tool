@@ -1,10 +1,11 @@
 <?php
 
     require_once('../functions/datosUnicapa.php');
+    require_once('../functions/funcionesHipotesis.php');
 
     $adaline=new Adaline($nroEntra, $nroDatos, $alfa, $nroIte);
     $adaline->train($datos);
-    var_dump($adaline);
+    $datosGrafica=datosGrafica($nroEntra,$nroDatos-1,$datos,$adaline->salida,$adaline->vectorPesos);
 
 ?>
 

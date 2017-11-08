@@ -10,7 +10,7 @@ class Perceptron
     protected $iteraciones = 0;
     protected $ecm = 0;
     protected $error = 0;
-    protected $salida = null;
+    public $salida = null;
 
     public function __construct($numEntradas,$numDatos, $alpha,$iteraciones)
     {
