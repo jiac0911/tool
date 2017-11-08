@@ -21,10 +21,13 @@
 
     require_once('../functions/getexcel.php');
     require_once('../functions/perceptron.php');
+    require_once('../functions/adaline.php');
 
     $datos=importData($bias,$tempFile);
     $nroEntra=sizeof($datos[0]);
     $nroDatos=sizeof($datos);
+// var_dump($datos);
+// die();
 
 
 
