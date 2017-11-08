@@ -6,7 +6,8 @@
     $adaline=new Adaline($nroEntra, $nroDatos, $alfa, $nroIte);
     $adaline->train($datos);
 
-    $datosGrafica=datosGrafica($nroEntra,$nroDatos-1,$datos,$adaline->salida,$adaline->vectorPesos);
+
+    $datosGrafica=datosGrafica($nroEntra-1,$nroDatos,$datos,$adaline->salida,$adaline->vectorPesos);
 
 // var_dump($datosGrafica);
 // die();
@@ -45,7 +46,7 @@
 
         </div>
 
-    <script>
+   <script>
         var datos= <?= json_encode($datosGrafica) ?>;
         var x=datos[0];
         x.unshift('x');

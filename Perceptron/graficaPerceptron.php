@@ -5,9 +5,8 @@
 
     $perceptron=new Perceptron($nroEntra, $nroDatos, $alfa, $nroIte);
     $perceptron->train($datos);
-    $datosGrafica=datosGrafica($nroEntra,$nroDatos-1,$datos,$perceptron->salida,$perceptron->vectorPesos);
-// var_dump($datosGrafica);
-// die();
+    $datosGrafica=datosGrafica($nroEntra-1,$nroDatos,$datos,$perceptron->salida,$perceptron->vectorPesos);
+
 
 ?>
 
@@ -44,7 +43,7 @@
         <div id="chart"></div>
         </div>
 
-    <script>
+<script>
         var datos= <?= json_encode($datosGrafica) ?>;
         var x=datos[0];
         x.unshift('x');
