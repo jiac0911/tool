@@ -8,7 +8,8 @@
 
     $datosGrafica=datosGrafica($nroEntra,$nroDatos-1,$datos,$adaline->salida,$adaline->vectorPesos);
 
-
+// var_dump($datosGrafica);
+// die();
 ?>
 
 <html>
@@ -40,23 +41,26 @@
 
             <?php }?></div>
 
+        <div id="chart"></div>
 
         </div>
 
-        <script>
-            var y= <?= json_encode($adaline->vectorPesos) ?>;
-            y.unshift('Datos');
-            var x=['x',0,1,2,3]
-            var chart = c3.generate({
-                bindto: '#chart',
-                data: {
-                    x: 'x',
-                  columns: [
-                    y,
-                    x
-                  ]
-                }
-            });
-        </script>
+    <script>
+        var datos= <?= json_encode($datosGrafica) ?>;
+        var x=datos[0];
+        x.unshift('x');
+        var y=datos[1];
+        y.unshift('Datos');
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                x: 'x',
+              columns: [
+                x,
+                y
+              ]
+            }
+        });
+    </script>
     </body>
 </html>

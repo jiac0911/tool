@@ -10,8 +10,8 @@ function datosGrafica($numEntradas,$numDatos,$entradas,$salidas,$pesos)
             $terminoXW=$terminoXW+($entradas[$k][$i]*$pesos[$i]);
 
         }
-        $datos[$k][0]=(($salidas[$k])-$terminoXW)/($pesos[0]);
-        $datos[$k][1]=$entradas[$k][1];
+        $datos[0][$k]=(($salidas[$k])-$terminoXW)/($pesos[0]);
+        $datos[1][$k]=$entradas[$k][1];
 
     }
     return $datos;

@@ -131,7 +131,7 @@ $yk=0;
                 $this->salida[$k]=$yk;
 
                 $this->error=$datos[$k][$this->numEntradas-1]-$yk;
-                echo ($yk)."</br>";
+                // echo ($yk)."</br>";
                 // echo $datos[$k][$this->numEntradas-1]."</br>";
 
                 $this->ecm= $this->ecm + (($this->error)^2)/(2*$this->numDatos);
