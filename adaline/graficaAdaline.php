@@ -5,7 +5,7 @@
     $adaline=new Adaline($nroEntra, $nroDatos, $alfa, $nroIte);
     $adaline->train($datos);
     var_dump($adaline);
-
+    die();
 ?>
 
 <html>
@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="../styles/w3.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/perceptron.css">
+    <link href="../c3/c3.css" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+    <script src="../c3/d3.v3.min.js" charset="utf-8"></script>
+    <script src="../c3/c3.min.js"></script>
     <body>
 
 <!-- Sidebar -->
@@ -25,15 +30,30 @@
           <h1>Adaline:</h1>
         </div>
 
-<div id="divperceptron"><?php for ($i=0; $i < sizeof($adaline->vectorPesos)-1 ; $i++) { ?>
+            <div id="divperceptron"><?php for ($i=0; $i < sizeof($adaline->vectorPesos)-1 ; $i++) { ?>
 
-    <label for="">Peso <?= $i+1 ?>:</label><?= $adaline->vectorPesos[$i]; ?><br>
+                <label for="">Peso <?= $i+1 ?>:</label><?= $adaline->vectorPesos[$i]; ?><br>
 
 
-<?php }?></div>
+            <?php }?></div>
 
 
         </div>
 
+        <script>
+            var y= <?= json_encode($adaline->vectorPesos) ?>;
+            y.unshift('Datos');
+            var x=['x',0,1,2,3]
+            var chart = c3.generate({
+                bindto: '#chart',
+                data: {
+                    x: 'x',
+                  columns: [
+                    y,
+                    x
+                  ]
+                }
+            });
+        </script>
     </body>
 </html>

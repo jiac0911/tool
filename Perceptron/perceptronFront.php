@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="../styles/w3.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/perceptron.css">
+
     <body>
 
 <!-- Sidebar -->

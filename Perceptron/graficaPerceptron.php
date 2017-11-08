@@ -41,11 +41,16 @@
         </div>
 
     <script>
+        var y= <?= json_encode($perceptron->vectorPesos) ?>;
+        y.unshift('Datos');
+        var x=['x',0,1,2,3]
         var chart = c3.generate({
             bindto: '#chart',
             data: {
+                x: 'x',
               columns: [
-                ['data1', 30, 200, 100, 400, 150, 250]
+                y,
+                x
               ]
             }
         });

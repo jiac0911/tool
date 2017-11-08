@@ -120,18 +120,24 @@ class Adaline
 
                 for ($i=0 ; $i < $this->numEntradas ; $i++ ) {
                     $a=$a + ($datos[$k][$i] + $this->vectorPesos[$i]);
+
                 }
-                $yk=0;
+
                 $yk=$a;
 
+
                 $this->salida[$k]=$yk;
+
                 $this->error=$datos[$k][$this->numEntradas-1]-$yk;
+                echo ($yk)."</br>";
                 // echo $datos[$k][$this->numEntradas-1]."</br>";
 
                 $this->ecm= $this->ecm + (($this->error)^2)/(2*$this->numDatos);
 
                 for ($i=0; $i < $this->numEntradas ; $i++) {
+
                     $this->vectorPesos[$i]=$this->vectorPesos[$i] + (($this->error)*$datos[$k][$i]);
+
                 }
             }
 

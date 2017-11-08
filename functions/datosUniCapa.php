@@ -26,7 +26,8 @@
     $datos=importData($bias,$tempFile);
     $nroEntra=sizeof($datos[0]);
     $nroDatos=sizeof($datos);
-
+// var_dump($datos);
+// die();
 
 
 ?>
