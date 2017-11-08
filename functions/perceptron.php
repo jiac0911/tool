@@ -10,7 +10,7 @@ class Perceptron
     protected $iteraciones = 0;
     protected $ecm = 0;
     protected $error = 0;
-    protected $salida = null;
+    public $salida = null;
 
     public function __construct($numEntradas,$numDatos, $alpha,$iteraciones)
     {
@@ -119,7 +119,7 @@ class Perceptron
                 $a=0;
 
                 for ($i=0 ; $i < $this->numEntradas ; $i++ ) {
-                    $a=$a + ($datos[$k][$i] + $this->vectorPesos[$i]);
+                    $a=$a + ($datos[$k][$i] * $this->vectorPesos[$i]);
                 }
 
                 if ($a >= 0) {
@@ -139,7 +139,7 @@ class Perceptron
                 }
             }
 
-            if ($this->ecm=0) {
+            if ($this->ecm==0) {
                 $j=$this->iteraciones;
             }
 

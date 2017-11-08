@@ -1,9 +1,12 @@
 <?php
 
     require_once('../functions/datosUnicapa.php');
+    require_once('../functions/funcionesHipotesis.php');
 
     $perceptron=new Perceptron($nroEntra, $nroDatos, $alfa, $nroIte);
     $perceptron->train($datos);
+    $datosGrafica=datosGrafica($nroEntra,$nroDatos-1,$datos,$perceptron->salida,$perceptron->vectorPesos);
+
 
 ?>
 
