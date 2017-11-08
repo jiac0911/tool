@@ -1,12 +1,8 @@
 <?php
 
-if(isset($_POST["nroEntra"])){
+if(isset($_POST["nroIte"])){
 
-    $nroEntra=$_POST["nroEntra"];
-
-}if(isset($_POST["nroDatos"])){
-
-    $nroDatos=$_POST["nroDatos"];
+    $nroIte=$_POST["nroIte"];
 
 }if(isset($_POST["bias"])){
 
@@ -24,7 +20,14 @@ if(isset($_POST["nroEntra"])){
 }
 
 require_once('../functions/getexcel.php');
+require_once('../functions/perceptron.php');
 
 $datos=importData($bias,$tempFile);
-var_dump($datos);
+$nroEntra=sizeof($datos[1]);
+$nroDatos=sizeof($datos--);
+
+
+$perceptron=new Perceptron($nroEntra, $nroDatos, $alfa, $nroIte);
+$perceptron->train($datos);
+
 ?>
