@@ -40,7 +40,6 @@ function importDataMulti($bias, $ruta, $entradas){
                 }else{
                     $datos[$row][$c]=(float)$data[$c];
                 }
-                $datos[$row][$c]=(float)$data[$c];
 
             }
             $temp=array_pop($datos[$row]);
