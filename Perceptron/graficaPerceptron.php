@@ -5,6 +5,7 @@
     $perceptron=new Perceptron($nroEntra, $nroDatos, $alfa, $nroIte);
     $perceptron->train($datos);
 
+
 ?>
 
 <html>

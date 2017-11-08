@@ -108,7 +108,7 @@ class Adaline
      */
     public function train($datos)
     {
-
+$yk=0;
         for ($j=0; $j < $this->iteraciones ; $j++) {
             # code...
 
@@ -119,9 +119,11 @@ class Adaline
                 $a=0;
 
                 for ($i=0 ; $i < $this->numEntradas ; $i++ ) {
-                    $a=$a + ($datos[$k][$i] + $this->vectorPesos[$i]);
+
+                    $a=$a + ($datos[$k][$i] * $this->vectorPesos[$i]);
+
                 }
-                $yk=0;
+
                 $yk=$a;
 
                 $this->salida[$k]=$yk;
@@ -131,11 +133,11 @@ class Adaline
                 $this->ecm= $this->ecm + (($this->error)^2)/(2*$this->numDatos);
 
                 for ($i=0; $i < $this->numEntradas ; $i++) {
-                    $this->vectorPesos[$i]=$this->vectorPesos[$i] + (($this->error)*$datos[$k][$i]);
+                    $this->vectorPesos[$i]=$this->vectorPesos[$i] +(($this->alpha)/($this->numDatos))*($this->error)*($datos[$k][$i]);
                 }
             }
 
-            if ($this->ecm=0) {
+            if ($this->ecm==0.0000001) {
                 $j=$this->iteraciones;
             }
 
