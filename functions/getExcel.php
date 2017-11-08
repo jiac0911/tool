@@ -1,9 +1,9 @@
 <?php
 
 function importData($bias, $ruta){
-    $row = 1;
+    $row = 0;
     $datos=array();
-    $deseados=array();
+
 
     if (($handle = fopen($ruta, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {

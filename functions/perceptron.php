@@ -6,13 +6,13 @@ class Perceptron
     protected $numDatos;
     protected $bias;
     protected $alpha;
-    protected $vectorPesos;
+    public $vectorPesos;
     protected $iteraciones = 0;
     protected $ecm = 0;
     protected $error = 0;
     protected $salida = null;
 
-    public function __construct($numEntradas,$numDatos, $alpha = 0.5,$iteraciones)
+    public function __construct($numEntradas,$numDatos, $alpha,$iteraciones)
     {
         if ($numEntradas < 1) {
             throw new \InvalidArgumentException();
@@ -112,7 +112,7 @@ class Perceptron
         for ($j=0; $j < $this->iteraciones ; $j++) {
             # code...
 
-        $this->$ecm=0;
+        $this->ecm=0;
 
 
             for ($k=0; $k < $this->numDatos; $k++) {
@@ -128,9 +128,10 @@ class Perceptron
                 else{
                     $yk=0;
                 }
-
                 $this->salida[$k]=$yk;
-                $this->error=$datos[$k][$this->numEntradas+1]-$yk;
+                $this->error=$datos[$k][$this->numEntradas-1]-$yk;
+                // echo $datos[$k][$this->numEntradas-1]."</br>";
+
                 $this->ecm= $this->ecm + (($this->error)^2)/(2*$this->numDatos);
 
                 for ($i=0; $i < $this->numEntradas ; $i++) {
@@ -138,7 +139,7 @@ class Perceptron
                 }
             }
 
-            if ($this->ecm=0.001) {
+            if ($this->ecm=0) {
                 $j=$this->iteraciones;
             }
 
