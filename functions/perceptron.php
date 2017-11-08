@@ -106,11 +106,9 @@ class Perceptron
      *
      * @throws \InvalidArgumentException
      */
-    public function train($entradas, $deseados)
+    public function train($datos)
     {
-        if (!is_array($entradas) || !($deseados == 0 || $deseados == 1)) {
-            throw new \InvalidArgumentException();
-        }
+
         for ($j=0; $j < $this->iteraciones ; $j++) {
             # code...
 
@@ -121,7 +119,7 @@ class Perceptron
                 $a=0;
 
                 for ($i=0 ; $i < $this->numEntradas ; $i++ ) {
-                    $a=$a + ($entradas[$i] + $this->vectorPesos[$i]);
+                    $a=$a + ($datos[$k][$i] + $this->vectorPesos[$i]);
                 }
 
                 if ($a >= 0) {
@@ -132,11 +130,11 @@ class Perceptron
                 }
 
                 $this->salida[$k]=$yk;
-                $this->error=$this->deseados[$k]-$yk;
+                $this->error=$datos[$k][$this->numEntradas+1]-$yk;
                 $this->ecm= $this->ecm + (($this->error)^2)/(2*$this->numDatos);
 
                 for ($i=0; $i < $this->numEntradas ; $i++) {
-                    $this->vectorPesos[$i]=$this->vectorPesos[$i] + (($this->error)*$entradas[i]);
+                    $this->vectorPesos[$i]=$this->vectorPesos[$i] + (($this->error)*$datos[$k][$i]);
                 }
             }
 
