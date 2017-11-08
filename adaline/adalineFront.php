@@ -14,10 +14,10 @@
         <div class="w3-container w3-teal">
           <h1>Perceptron:</h1>
         </div>
-        <form action="../datosUniCapa.php" method="post" enctype="multipart/form-data">
+        <form action="graficaAdaline.php" method="post" enctype="multipart/form-data">
 
             <label for="fname">Numero de Iteraciones</label>
-            <input type="text" id="nroDatos" name="nroDatos" >
+            <input type="text" id="nroIte" name="nroIte" >
             <label for="lname">Bias</label>
             <input type="text" id="bias" name="bias" >
             <label for="lname">Alfa</label>

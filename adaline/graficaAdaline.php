@@ -2,8 +2,9 @@
 
     require_once('../functions/datosUnicapa.php');
 
-    $perceptron=new Perceptron($nroEntra, $nroDatos, $alfa, $nroIte);
-    $perceptron->train($datos);
+    $adaline=new Adaline($nroEntra, $nroDatos, $alfa, $nroIte);
+    $adaline->train($datos);
+    var_dump($adaline);
 
 ?>
 
@@ -21,12 +22,12 @@
 <!-- Page Content -->
         <div style="margin-left:25%">
         <div class="w3-container w3-teal">
-          <h1>Perceptron:</h1>
+          <h1>Adaline:</h1>
         </div>
 
-<div id="divperceptron"><?php for ($i=0; $i < sizeof($perceptron->vectorPesos)-1 ; $i++) { ?>
+<div id="divperceptron"><?php for ($i=0; $i < sizeof($adaline->vectorPesos)-1 ; $i++) { ?>
 
-    <label for="">Peso <?= $i+1 ?>:</label><?= $perceptron->vectorPesos[$i]; ?><br>
+    <label for="">Peso <?= $i+1 ?>:</label><?= $adaline->vectorPesos[$i]; ?><br>
 
 
 <?php }?></div>
