@@ -32,14 +32,19 @@
         <div class="w3-container w3-teal">
           <h1>Perceptron:</h1>
         </div>
-
+<?php $perceptrontxt = fopen("perceptron.txt", "w")or die("Unable to open file!");    ?>
 <div id="divperceptron"><?php for ($i=0; $i < sizeof($perceptron->vectorPesos)-1 ; $i++) { ?>
 
     <label for="">Peso <?= $i+1 ?>:</label><?= $perceptron->vectorPesos[$i]; ?><br>
+    <?php
+        $txt = $perceptron->vectorPesos[$i]. "\n";
+        fwrite($perceptrontxt, $txt);
 
+
+    ?>
 
 <?php }?></div>
-
+        <?php fclose($perceptrontxt);?>
         <div id="chart"></div>
         </div>
 

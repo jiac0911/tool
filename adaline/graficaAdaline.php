@@ -39,13 +39,19 @@
         <div class="w3-container w3-teal">
           <h1>Adaline:</h1>
         </div>
-
+<?php $adalinetxt = fopen("adaline.txt", "w")or die("Unable to open file!"); ?>
             <div id="divperceptron"><?php for ($i=0; $i < sizeof($adaline->vectorPesos)-1 ; $i++) { ?>
 
                 <label for="">Peso <?= $i+1 ?>:</label><?= $adaline->vectorPesos[$i]; ?><br>
+                    <?php
+        $txt = $adaline->vectorPesos[$i]. "\n";
+        fwrite($adalinetxt, $txt);
 
+
+    ?>
 
             <?php }?></div>
+            <?php fclose($adalinetxt);?>
 
         <div id="chart"></div>
 
@@ -68,6 +74,7 @@
               ]
             }
         });
+        //Hola jurko, esto es un comentario con amor <3
     </script>
     </body>
 </html>
