@@ -7,10 +7,10 @@ function datosGrafica($numEntradas,$numDatos,$entradas,$salidas,$pesos)
         # code...
         $terminoXW=0;
         for ($i=1; $i <$numEntradas ; $i++) {
-            $terminoXW=$terminoXW+($entradas[$k][$i]*$pesos[$i]);
+            $terminoXW=$terminoXW-($entradas[$k][$i]*$pesos[$i]);
 
         }
-        $datos[0][$k]=(($salidas[$k])-$terminoXW)/($pesos[0]);
+        $datos[0][$k]=bcdiv((($terminoXW)/($pesos[0])),1,2);
         $datos[1][$k]=$entradas[$k][1];
 
     }
