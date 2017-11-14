@@ -7,10 +7,15 @@
     $adaline->train($datos);
 
 
-    $datosGrafica=datosGrafica($nroEntra-1,$nroDatos,$datos,$adaline->salida,$adaline->vectorPesos);
 
-// var_dump($datosGrafica);
-// die();
+    $datosGrafica=datosGrafica($nroEntra-1,$nroDatos,$datos,$adaline->salida,$adaline->vectorPesos);
+    $datosecm=$adaline->ecm;
+    $datositer;
+    for ($i=0; $i < $adaline->iteraciones; $i++) {
+        $datositer[$i]=$i;
+    }
+
+
 ?>
 
 <html>
@@ -47,10 +52,11 @@
         </div>
 
    <script>
-        var datos= <?= json_encode($datosGrafica) ?>;
-        var x=datos[0];
+        var datosecm= <?= json_encode($datosecm) ?>;
+        var datositer= <?= json_encode($datositer) ?>;
+        var x=datositer;
         x.unshift('x');
-        var y=datos[1];
+        var y=datosecm;
         y.unshift('Datos');
         var chart = c3.generate({
             bindto: '#chart',
