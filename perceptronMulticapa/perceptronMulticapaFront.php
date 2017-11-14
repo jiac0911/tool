@@ -22,6 +22,8 @@
             <input type="text" id="numEnt" name="numEnt" >
             <label for="lOcu">Número de Capas Ocultas</label>
             <input type="text" id="numOcu" name="numOcu" >
+            <label for="lSal">Número de Salidas</label>
+            <input type="text" id="numSal" name="numSal" >
             <label for="lIter">Número de Iteraciones</label>
             <input type="text" id="numIter" name="numIter" >
             <label for="lDat">Datos (.csv)</label><br>

@@ -4,9 +4,10 @@
 
     include_once '../functions/perceptronMulticapa.php';
 
-    $alfa=0.5;
+    $alfa=0.05;
     $numEntradas=2;
     $numOcultas=10;
+    $numSalidas=4;
     $numIteraciones=1000;
     $matrizDatos=array(
         array(0,0,1,0),
@@ -15,7 +16,7 @@
         array(1,1,1,0),
             );
 
-    $perceptronM=new perceptronMulticapa($alfa,$numEntradas,$numOcultas,$numIteraciones,$matrizDatos);
+    $perceptronM=new perceptronMulticapa($alfa,$numEntradas,$numOcultas,$numSalidas,$numIteraciones,$matrizDatos);
     $perceptronM->entrenar();
     var_dump($perceptronM);
     die();
