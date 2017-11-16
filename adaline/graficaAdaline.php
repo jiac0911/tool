@@ -44,7 +44,7 @@
 
                 <label for="">Peso <?= $i+1 ?>:</label><?= $adaline->vectorPesos[$i]; ?><br>
                     <?php
-        $txt = $adaline->vectorPesos[$i]. "\n";
+        $txt = $adaline->vectorPesos[$i]. ", ";
         fwrite($adalinetxt, $txt);
 
 

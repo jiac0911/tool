@@ -37,7 +37,7 @@
 
     <label for="">Peso <?= $i+1 ?>:</label><?= $perceptron->vectorPesos[$i]; ?><br>
     <?php
-        $txt = $perceptron->vectorPesos[$i]. "\n";
+        $txt = $perceptron->vectorPesos[$i]. ", ";
         fwrite($perceptrontxt, $txt);
 
 

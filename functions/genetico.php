@@ -25,12 +25,14 @@ function ruleta(){
 
         $individuos[$i]=new Individuo($perceptron->vectorPesos,$aptitud);
         $sumaAptitud=$sumaAptitud+$aptitud;
+        $individuos[$i]->setAptitudAcum($sumaAptitud);
 
     }
 
     for ($j=0; $j <100 ; $j++) {
 
         $individuos[$j]->setAptitudN($sumaAptitud);
+
     }
 
 
