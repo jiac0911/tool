@@ -51,20 +51,6 @@
           <h1>Adaline:</h1>
         </div>
 
-<<<<<<< HEAD
-                <label for="">Peso <?= $i+1 ?>:</label><?= $adaline->vectorPesos[$i]; ?><br>
-                    <?php
-        $txt = $adaline->vectorPesos[$i]. ", ";
-        fwrite($adalinetxt, $txt);
-
-
-    ?>
-
-            <?php }?></div>
-            <?php fclose($adalinetxt);?>
-=======
->>>>>>> c85a421b1027e83f10d6abf20c02ef234f6dccd9
-
         <div id="chart"></div>
 
 
