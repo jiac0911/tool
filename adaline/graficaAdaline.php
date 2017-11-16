@@ -15,6 +15,17 @@
         $datositer[$i]=$i;
     }
 
+    $adalinetxt = fopen("adaline.txt", "w")or die("Unable to open file!");
+    for ($i=0; $i < sizeof($adaline->vectorPesos)-1 ; $i++) {
+        $txt = "Peso ".$i.": ".$adaline->vectorPesos[$i]. "\r\n";
+        fwrite($adalinetxt, $txt);
+
+    }
+        $txt = "ECM: ".$adaline->ecm[$adaline->iteraciones]. "\r\n";
+        fwrite($adalinetxt, $txt);
+        $txt = "Iteraciones: ".$adaline->iteraciones. "\r\n";
+        fwrite($adalinetxt, $txt);
+             fclose($adalinetxt);
 
 ?>
 
@@ -39,23 +50,10 @@
         <div class="w3-container w3-teal">
           <h1>Adaline:</h1>
         </div>
-<?php $adalinetxt = fopen("adaline.txt", "w")or die("Unable to open file!"); ?>
-            <div id="divperceptron"><?php for ($i=0; $i < sizeof($adaline->vectorPesos)-1 ; $i++) { ?>
 
-                <label for="">Peso <?= $i+1 ?>:</label><?= $adaline->vectorPesos[$i]; ?><br>
-                    <?php
-        $txt = $adaline->vectorPesos[$i]. "\n";
-        fwrite($adalinetxt, $txt);
-
-
-    ?>
-
-            <?php }?></div>
-            <?php fclose($adalinetxt);?>
 
         <div id="chart"></div>
 
-        </div>
 
    <script>
         var datosecm= <?= json_encode($datosecm) ?>;

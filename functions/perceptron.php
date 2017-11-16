@@ -7,8 +7,8 @@ class Perceptron
     protected $bias;
     protected $alpha;
     public $vectorPesos;
-    protected $iteraciones = 0;
-    protected $ecm = 0;
+    public $iteraciones = 0;
+    public $ecm = 0;
     protected $error = 0;
     public $salida = null;
 

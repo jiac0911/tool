@@ -7,7 +7,15 @@
     $perceptron->train($datos);
     $datosGrafica=datosGrafica($nroEntra-1,$nroDatos,$datos,$perceptron->salida,$perceptron->vectorPesos);
 
+    $perceptrontxt = fopen("perceptron.txt", "w")or die("Unable to open file!");
+    for ($i=0; $i < sizeof($perceptron->vectorPesos)-1 ; $i++) {
+        $txt = "Peso ".$i.": ". $perceptron->vectorPesos[$i]. "\r\n";
+        fwrite($perceptrontxt, $txt);
+    }
 
+        $txt="Iteraciones: ". $perceptron->iteraciones."\n";
+        fwrite($perceptrontxt, $txt);
+         fclose($perceptrontxt);
 ?>
 
 <html>
@@ -32,22 +40,8 @@
         <div class="w3-container w3-teal">
           <h1>Perceptron:</h1>
         </div>
-<?php $perceptrontxt = fopen("perceptron.txt", "w")or die("Unable to open file!");    ?>
-<div id="divperceptron"><?php for ($i=0; $i < sizeof($perceptron->vectorPesos)-1 ; $i++) { ?>
 
-    <label for="">Peso <?= $i+1 ?>:</label><?= $perceptron->vectorPesos[$i]; ?><br>
-    <?php
-        $txt = $perceptron->vectorPesos[$i]. "\n";
-        fwrite($perceptrontxt, $txt);
-
-
-    ?>
-
-<?php }?></div>
-        <?php fclose($perceptrontxt);?>
         <div id="chart"></div>
-        </div>
-
 <script>
         var datos= <?= json_encode($datosGrafica) ?>;
         var x=datos[0];
