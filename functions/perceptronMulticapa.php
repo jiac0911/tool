@@ -14,15 +14,16 @@ class perceptronMulticapa
 	protected $matrizC,$matrizW;
 
 	
-	function __construct($alfa,$numEntradas,$numOcultas,$numIteraciones,$matrizDatos)
+	function __construct($alfa,$numEntradas,$numOcultas,$numSalidas,$numIteraciones,$matrizDatos)
 	{
 		$this->alfa=$alfa;
 		$this->numEntradas=$numEntradas+1;
 		$this->numOcultas=$numOcultas;
+		$this->numSalidas=$numSalidas;
 		$this->numIteraciones=$numIteraciones;
 		$this->matrizDatos=$matrizDatos;
 		$this->numDatos=count($this->matrizDatos);
-		$this->numSalidas=count($this->matrizDatos[0])-$this->numEntradas;
+		//$this->numSalidas=count($this->matrizDatos[0])-$this->numEntradas;
 	}
 
 	function generarPesos(){
@@ -53,17 +54,6 @@ class perceptronMulticapa
 				$this->matrizW[$j][$i] = $this->matrizW[$j][$i] + $this->alfa * $this->dl[$j] * $this->h[$j+1] * (1 - $this->h[$j+1]) * $this->x[$i];
 			}
 		}
-		/*or ($k=0; $k <$this->numSalidas; $k++) { 
-			for ($j=0; $j<=$this->numOcultas ; $j++) { 
-				$this->matrizC[$k][$j] = $this->matrizC[$k][$j] + $this->alfa * $this->erk[$k] * $this->yk[$k] * (1 - $this->yk[$k]) * $this->h[$j];
-			}
-		}
-
-		for ($j=0; $j <$this->numOcultas; $j++) { 
-			for ($i=0; $i <$this->numEntradas; $i++) { 
-				$this->matrizW[$j][$i] = $this->matrizW[$j][$i] + $this->alfa * $this->dl[$j] * $this->h[$j+1] * (1 - $this->h[$j+1]) * $this->x[$i];
-			}
-		}*/
 
 	}
 
@@ -73,7 +63,7 @@ class perceptronMulticapa
 
 		for ($m=0; $m<$this->numIteraciones; $m++) { 
 			
-			$this->ecm=0;
+			$this->ecm[$m]=0;
 
 			for ($n=0; $n<$this->numDatos; $n++) { 
 
@@ -88,10 +78,10 @@ class perceptronMulticapa
 					for ($i=0 ; $i<$this->numEntradas; $i++) { 
 						
 						$this->x[$i]=$this->matrizDatos[$n][$i];
-						$this->aj[$j] =$this->aj[$j] + $this->x[$i] * $this->matrizW[$j][$i];
+						$this->aj[$j] =$this->aj[$j] + ($this->x[$i] * $this->matrizW[$j][$i]);
 					}
 
-					$this->h[$j+1] = 1 / (1 + exp(-$this->aj[$j]));
+					$this->h[$j+1] = 1 /(1 + exp(-($this->aj[$j])));
 				}
 
 				//Inicializan las entradas y se calcula función de activación (salida)
@@ -106,9 +96,9 @@ class perceptronMulticapa
 					}
 
 					$this->yk[$k] = 1 / (1 + exp(-$this->ak[$k]));
-					$this->desk[$k]=$this->matrizDatos[$n][$this->numEntradas+$k];
+					$this->desk[$k]=$this->matrizDatos[$n][$this->numEntradas];
 					$this->erk[$k] = $this->desk[$k] - $this->yk[$k];
-					$this->ecm = $this->ecm + (pow($this->erk[$k],2)/(2 * $this->numDatos))	;
+					$this->ecm[$m] = $this->ecm[$m] + (pow($this->erk[$k],2))/(2 * $this->numDatos);
 				}
 
 				//Sensitividad: Cuánto error se envía a todas las salidas
@@ -126,7 +116,7 @@ class perceptronMulticapa
 				$this->actualizarPesos();
 			}
 
-			if ($this->ecm < 0.00001) {
+			if ($this->ecm[$m] <= 0.00001) {
 				$m=$this->numIteraciones;
 			}
 		}
