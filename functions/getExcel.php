@@ -42,9 +42,9 @@ function importDataMulti($bias, $ruta, $entradas){
                 }
 
             }
-            $temp=array_pop($datos[$row]);
-            array_push($datos[$row], (float)$bias);
-            array_push($datos[$row],$temp);
+            $temp=array_pop($datos[$entradas-1]);
+            array_push($datos[$entradas-1], (float)$bias);
+            array_push($datos[$entradas-1],$temp);
             $row++;
         }
         fclose($handle);

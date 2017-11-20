@@ -18,8 +18,8 @@
 
             <label for=lAlfa>Alfa</label>
             <input type="text" id="alfa" name="alfa" >
-            <label for="lEnt">Número de Entradas</label>
-            <input type="text" id="numEnt" name="numEnt" >
+            <label for="lEnt">Bias</label>
+            <input type="text" id="bias" name="bias" >
             <label for="lOcu">Número de Capas Ocultas</label>
             <input type="text" id="numOcu" name="numOcu" >
             <label for="lSal">Número de Salidas</label>
