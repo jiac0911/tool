@@ -10,6 +10,7 @@
 
     $datosGrafica=datosGrafica($nroEntra-1,$nroDatos,$datos,$adaline->salida,$adaline->vectorPesos);
     $datosecm=$adaline->ecm;
+    // var_dump($adaline);
     $datositer;
     for ($i=0; $i < $adaline->iteraciones; $i++) {
         $datositer[$i]=$i;
@@ -21,7 +22,7 @@
         fwrite($adalinetxt, $txt);
 
     }
-        $txt = "ECM: ".$adaline->ecm[$adaline->iteraciones]. "\r\n";
+        $txt = "ECM: ".$adaline->ecm[$adaline->iteraciones-1]. "\r\n";
         fwrite($adalinetxt, $txt);
         $txt = "Iteraciones: ".$adaline->iteraciones. "\r\n";
         fwrite($adalinetxt, $txt);
