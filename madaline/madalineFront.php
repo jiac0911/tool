@@ -12,7 +12,7 @@
 <!-- Page Content -->
         <div style="margin-left:25%">
         <div class="w3-container w3-teal">
-          <h1>Adaline:</h1>
+          <h1>Madaline:</h1>
         </div>
         <form action="graficaMadaline.php" method="post" enctype="multipart/form-data">
 
