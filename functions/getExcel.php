@@ -24,7 +24,7 @@ function importData($bias, $ruta){
 
 }
 
-function importDataMulti($bias, $ruta, $entradas){
+function importDataMulti($bias, $ruta, $salidas){
     $row = 1;
     $datos=array();
     $deseados=array();
@@ -35,18 +35,16 @@ function importDataMulti($bias, $ruta, $entradas){
             // echo "<p> $num fields in line $row: <br /></p>\n";
             for ($c=0; $c < $num; $c++) {
                 // echo $data[$c] . "<br />\n";
-                if ($c==$entradas-1) {
-                    # code...
-                }else{
                     $datos[$row][$c]=(float)$data[$c];
-                }
-
             }
-            $temp=array_pop($datos[$entradas-1]);
-            array_push($datos[$entradas-1], (float)$bias);
-            array_push($datos[$entradas-1],$temp);
+            $x=[$bias];
+            $index=sizeof($datos[$row])-$salidas;
+
+            array_splice($datos[$row],$index,0,$x);
             $row++;
         }
+
+
         fclose($handle);
     }
     return $datos;
