@@ -35,12 +35,12 @@ function importDataMulti($bias, $ruta, $salidas){
             // echo "<p> $num fields in line $row: <br /></p>\n";
             for ($c=0; $c < $num; $c++) {
                 // echo $data[$c] . "<br />\n";
-                    $datos[$row][$c]=(float)$data[$c];
+                    $datos[$row-1][$c]=(float)$data[$c];
             }
             $x=[$bias];
-            $index=sizeof($datos[$row])-$salidas;
+            $index=sizeof($datos[$row-1])-$salidas;
 
-            array_splice($datos[$row],$index,0,$x);
+            array_splice($datos[$row-1],$index,0,$x);
             $row++;
         }
 
