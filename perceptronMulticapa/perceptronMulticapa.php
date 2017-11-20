@@ -30,14 +30,14 @@ class perceptronMulticapa
 
 		for ($j=0; $j <$this->numOcultas; $j++) { 
 			for ($i=0; $i <$this->numEntradas; $i++) { 
-				$this->matrizW[$j][$i] = mt_rand()/mt_getrandmax()*2-1;
+				$this->matrizW[$j][$i] = rand()/getrandmax() * 2 - 1;
 
 			}
 		}
 
 		for ($k=0; $k <$this->numSalidas; $k++) { 
 			for ($j=0; $j<=$this->numOcultas ; $j++) { 
-				$this->matrizC[$k][$j] =  mt_rand()/mt_getrandmax()*2-1;
+				$this->matrizC[$k][$j] =  rand()/getrandmax() * 2 - 1;
 			}
 		}
 	}
