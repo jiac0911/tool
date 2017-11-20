@@ -2,7 +2,7 @@
 
     //require_once('../functions/datosMulticapa.php');
 
-    include_once '../functions/perceptronMulticapa.php';
+    include_once 'perceptronMulticapa.php';
 
     $alfa=0.05;
     $numEntradas=2;
@@ -22,4 +22,3 @@
     die();
 
 ?>
-   
