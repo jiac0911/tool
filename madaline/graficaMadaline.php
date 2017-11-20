@@ -52,7 +52,16 @@
         </div>
 
         <div id="chart"></div>
+<?php
+require_once('madaline.php');
 
+$madaline=new Madaline($nroEntra,$nroDatos,$alfa,$nroIte,$nroOcultas);
+$madaline->train($datos);
+var_dump($madaline);
+
+
+
+ ?>
 <!--
    <script>
         var datosecm= <?= json_encode($datosecm) ?>;

@@ -14,7 +14,7 @@
 
     }if(isset($_POST["nroOcultas"])){
 
-        $alfa=$_POST["nroOcultas"];
+        $nroOcultas=$_POST["nroOcultas"];
 
     }if(isset($_FILES['archivo'])){
 
@@ -30,8 +30,8 @@
     $datos=importData($bias,$tempFile);
     $nroEntra=sizeof($datos[0])-2;
     $nroDatos=sizeof($datos);
-    // var_dump($nroEntra);
-    // die();
+    var_dump($datos);
+    die();
 
 
 

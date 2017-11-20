@@ -20,9 +20,9 @@
             <input type="text" id="nroIte" name="nroIte" >
             <label for="lname">Bias</label>
             <input type="text" id="bias" name="bias" >
-            <label for="lname">Alfa</label>
-            <input type="text" id="nroOcultas" name="nroOcultas" >
             <label for="lname">Numero de ocultas</label>
+            <input type="text" id="nroOcultas" name="nroOcultas" >
+            <label for="lname">Alfa</label>
             <input type="text" id="alfa" name="alfa" >
             <label for="lname">Datos (.csv)</label><br>
             <input type="file" name="archivo" id="archivo" />

@@ -64,7 +64,7 @@ class Madaline
                     $y += $a[$j] * $this->vectorPesosC[$j];
                 }
                 $y = 1 / (1 + (exp(-$y)));
-
+                echo $this->numEntradas;
                 $er = $y - $datos[$k][$this->numEntradas];
 
                 $this->ecm += abs($er);
