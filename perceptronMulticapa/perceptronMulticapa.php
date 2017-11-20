@@ -30,13 +30,14 @@ class perceptronMulticapa
 
 		for ($j=0; $j <$this->numOcultas; $j++) { 
 			for ($i=0; $i <$this->numEntradas; $i++) { 
-				$this->matrizW[$j][$i] = (-1) + 2 * rand();
+				$this->matrizW[$j][$i] = mt_rand()/mt_getrandmax()*2-1;
+
 			}
 		}
 
 		for ($k=0; $k <$this->numSalidas; $k++) { 
 			for ($j=0; $j<=$this->numOcultas ; $j++) { 
-				$this->matrizC[$k][$j] = (-1) + 2 * rand();
+				$this->matrizC[$k][$j] =  mt_rand()/mt_getrandmax()*2-1;
 			}
 		}
 	}
@@ -61,6 +62,7 @@ class perceptronMulticapa
 
 		$this->generarPesos();
 
+
 		for ($m=0; $m<$this->numIteraciones; $m++) { 
 			
 			$this->ecm[$m]=0;
@@ -81,7 +83,7 @@ class perceptronMulticapa
 						$this->aj[$j] =$this->aj[$j] + ($this->x[$i] * $this->matrizW[$j][$i]);
 					}
 
-					$this->h[$j+1] = 1 /(1 + exp(-($this->aj[$j])));
+					$this->h[$j+1] = 1/(1 + exp(-($this->aj[$j])));
 				}
 
 				//Inicializan las entradas y se calcula función de activación (salida)
@@ -92,11 +94,11 @@ class perceptronMulticapa
 
 					for ($j=0; $j<=$this->numOcultas; $j++) { 
 						
-						$this->ak[$k] = $this->ak[$k] + $this->h[$j] * $this->matrizC[$k][$j];
+						$this->ak[$k] = $this->ak[$k] + ($this->h[$j] * $this->matrizC[$k][$j]);
 					}
 
-					$this->yk[$k] = 1 / (1 + exp(-$this->ak[$k]));
-					$this->desk[$k]=$this->matrizDatos[$n][$this->numEntradas];
+					$this->yk[$k] = 1/(1 + exp(-($this->ak[$k])));
+					$this->desk[$k]= $this->matrizDatos[$n][$this->numEntradas+$k];
 					$this->erk[$k] = $this->desk[$k] - $this->yk[$k];
 					$this->ecm[$m] = $this->ecm[$m] + (pow($this->erk[$k],2))/(2 * $this->numDatos);
 				}
@@ -109,14 +111,14 @@ class perceptronMulticapa
 
 					for ($k=0; $k<$this->numSalidas; $k++) {
 
-						$this->dl[$j] = $this->dl[$j] + $this->erk[$k] * $this->yk[$k] * (1 - $this->yk[$k]) * $this->matrizC[$k][$j+1];
+						$this->dl[$j] = $this->dl[$j] + $this->erk[$k] * $this->yk[$k] * (1 - $this->yk[$k]) * $this->matrizC[$k][$j];
 					}
 				}
 
 				$this->actualizarPesos();
 			}
 
-			if ($this->ecm[$m] <= 0.00001) {
+			if ($this->ecm[$m] <= 0.0001) {
 				$m=$this->numIteraciones;
 			}
 		}
