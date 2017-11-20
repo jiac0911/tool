@@ -30,8 +30,6 @@
     $datos=importData($bias,$tempFile);
     $nroEntra=sizeof($datos[0])-2;
     $nroDatos=sizeof($datos);
-    var_dump($datos);
-    die();
 
 
 

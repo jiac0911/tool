@@ -1,5 +1,5 @@
 <?php
-
+set_time_limit(1000);
 class Madaline
 {
     protected $numEntradas;
@@ -10,7 +10,7 @@ class Madaline
     public $matrizPesos;
     public $vectorPesosC;
     public $iteraciones = 0;
-    public $ecm = 0;
+    public $ecm;
     protected $error = 0;
     public $salida = null;
 
@@ -32,7 +32,7 @@ class Madaline
                     $this->matrizPesos[$j][$i] = rand()/getrandmax() * 2 - 1;
                 }
 
-            $this->vectorPesosC[$j]=rand()/getrandmax() * 2 - 1;
+               $this->vectorPesosC[$j]=rand()/getrandmax() * 2 - 1;
         }
 
     }
@@ -43,10 +43,7 @@ class Madaline
         $a;
         $cont = 1;
         for ($l=1; $l < $this->iteraciones ; $l++) {
-            # code...
-
-
-            $this->ecm=0;
+        $this->ecm[$l]=0;
             for ($k=0; $k < $this->numDatos; $k++) {
                 $y = 0;
                 for ($j=0; $j < $this->numOcultas ; $j++) {
@@ -61,22 +58,22 @@ class Madaline
                         }
                     }
                     $a[$j]=1/(1+(exp(-$a[$j])));
-                    $y += $a[$j] * $this->vectorPesosC[$j];
+                    $y = $y + $a[$j] * $this->vectorPesosC[$j];
                 }
-                $y = 1 / (1 + (exp(-$y)));
-                echo $this->numEntradas;
+                $y = 1 / (1 + (exp(-1*$y)));
                 $er = $y - $datos[$k][$this->numEntradas];
 
-                $this->ecm += abs($er);
+                $this->ecm[$l] += abs($er);
                 for ($j=0; $j < $this->numOcultas ; $j++) {
                     for ($i=0 ; $i < $this->numEntradas ; $i++ ) {
                         $this->matrizPesos[$j][$i] = $this->matrizPesos[$j][$i] - (($this->alpha) * $er * ($this->vectorPesosC[$j]) * ($datos[$k][$i] )* $y * (1 - $y) * $a[$j] * (1 - $a[$j]));
                     }
                     $this->vectorPesosC[$j] = $this->vectorPesosC[$j] - ($this->alpha * $er * $a[$j] * $y * (1 - $y));
                 }
+                $this->salida[$k]=$y;
             }
 
-            if ($this->ecm == 0) {
+            if ($this->ecm[$l] == 0.001) {
                 $l = $this->iteraciones;
 
             }
