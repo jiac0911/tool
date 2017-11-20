@@ -12,6 +12,10 @@
 
         $alfa=$_POST["alfa"];
 
+    }if(isset($_POST["nroOcultas"])){
+
+        $nroOcultas=$_POST["nroOcultas"];
+
     }if(isset($_FILES['archivo'])){
 
         $tempFile = $_FILES['archivo']["tmp_name"];
@@ -24,10 +28,10 @@
     require_once('../../adaline/adaline.php');
 
     $datos=importData($bias,$tempFile);
-    $nroEntra=sizeof($datos[0]);
+    $nroEntra=sizeof($datos[0])-2;
     $nroDatos=sizeof($datos);
-// var_dump($datos);
-// die();
+    var_dump($datos);
+    die();
 
 
 

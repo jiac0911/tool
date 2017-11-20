@@ -1,18 +1,18 @@
 <?php
 
-class Perceptron
+class PerceptronGenetico
 {
     protected $numEntradas;
     protected $numDatos;
     protected $bias;
     protected $alpha;
     public $vectorPesos;
-    protected $iteraciones = 0;
-    protected $ecm = 0;
+    public $iteraciones = 0;
+    public $ecm = 0;
     protected $error = 0;
     public $salida = null;
 
-    public function __construct($numEntradas,$numDatos, $alpha,$iteraciones)
+    public function __construct($numEntradas,$numDatos, $alpha,$iteraciones,$vectorPesos)
     {
         if ($numEntradas < 1) {
             throw new \InvalidArgumentException();
@@ -23,10 +23,8 @@ class Perceptron
         $this->alpha = $alpha;
         $this->iteraciones = $iteraciones;
         $this->numDatos = $numDatos;
+        $this->vectorPesos = $vectorPesos;
 
-        for ($i = 0; $i < $this->numEntradas; $i++) {
-            $this->vectorPesos[$i] = rand()/getrandmax() * 2 - 1;
-        }
     }
     public function getSalida()
     {
@@ -59,53 +57,6 @@ class Perceptron
         $this->VectorPesos = $VectorPesos;
     }
 
-
-/*
-    public function getLearningRate()
-    {
-        return $this->learningRate;
-    }
-    /**
-     * @param float $learningRate
-     *
-     * @throws \InvalidArgumentException
-     */
-    /*
-    public function setLearningRate($learningRate)
-    {
-        if (!is_numeric($learningRate) || $learningRate <= 0 || $learningRate > 1) {
-            throw new \InvalidArgumentException();
-        }
-        $this->learningRate = $learningRate;
-    }
-    /**
-     * @return int
-     *//*
-    public function getIterationError()
-    {
-        return $this->iterationError;
-    }
-    /**
-     * @param array $entradas
-     *
-     * @return int (0 for false, 1 = true)
-     * @throws \InvalidArgumentException
-     *//*
-    public function test($entradas)
-    {
-        if (!is_array($entradas) || count($entradas) != $this->vectorLength) {
-            throw new \InvalidArgumentException();
-        }
-        $testResult = $this->dotProduct($this->weightVector, $entradas) + $this->bias;
-        $this->output = $testResult > 0 ? 1 : 0;
-        return $this->output;
-    }
-    /**
-     * @param array $entradas array of input signals
-     * @param int  $deseados      1 = true / 0 = false
-     *
-     * @throws \InvalidArgumentException
-     */
     public function train($datos)
     {
 
