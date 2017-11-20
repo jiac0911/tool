@@ -1,8 +1,8 @@
 <?php
 
-    if(isset($_POST["nroIte"])){
+    if(isset($_POST["numIter"])){
 
-        $nroIte=$_POST["nroIte"];
+        $nroIte=$_POST["numIter"];
 
     }if(isset($_POST["bias"])){
 
@@ -12,9 +12,13 @@
 
         $alfa=$_POST["alfa"];
 
-    }if(isset($_POST["nroOcultas"])){
+    }if(isset($_POST["numOcu"])){
 
-        $nroOcultas=$_POST["nroOcultas"];
+        $nroOcultas=$_POST["numOcu"];
+
+    }if(isset($_POST["numSal"])){
+
+        $nroSalidas=$_POST["numSal"];
 
     }if(isset($_FILES['archivo'])){
 
@@ -27,8 +31,8 @@
     require_once('../perceptron/perceptron.php');
     require_once('../adaline/adaline.php');
 
-    $datos=importData($bias,$tempFile);
-    $nroEntra=sizeof($datos[0])-2;
+    $datos=importDataMulti($bias,$tempFile,$nroSalidas);
+    $nroEntra=sizeof($datos[1])-1-$nroSalidas;
     $nroDatos=sizeof($datos);
 
 
