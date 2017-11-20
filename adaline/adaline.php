@@ -108,7 +108,7 @@ class Adaline
      */
     public function train($datos)
     {
-$yk=0;
+        $yk=0;
         for ($j=0; $j < $this->iteraciones ; $j++) {
             # code...
 

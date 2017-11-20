@@ -24,8 +24,8 @@
     }
 
     require_once('../functions/getexcel.php');
-    require_once('../../perceptron/perceptron.php');
-    require_once('../../adaline/adaline.php');
+    require_once('../perceptron/perceptron.php');
+    require_once('../adaline/adaline.php');
 
     $datos=importData($bias,$tempFile);
     $nroEntra=sizeof($datos[0])-2;
